@@ -1,5 +1,28 @@
 :root {
-  --color-main: #333;
+  --bg-color-main: #333944;
+  --border-color-main: #666c77;
+  --button-active-bg-color: #43afbd;
+  --button-active-border-color: #307f88;
+  --button-bg-color: #3d96a2;
+  --button-border-color: #368a95;
+  --button-hover-bg-color: #368a95;
+  --button-hover-border-color: #307f88;
+  --button-text-color: #eef;
+  --card-bg-color: #719198;
+  --card-border-color: #bbbfcc;
+  --color-main: #bbbfcc;
+  --loader-grid-bg-color: #eef8ff;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color-main: #f3f3ff;
+    --border-color-main: #55a79e;
+    --card-bg-color: #4d978e;
+    --card-border-color: #889;
+    --color-main: #334;
+    --loader-grid-bg-color: #3C736D;
+  }
 }
 
 *,
@@ -9,5 +32,194 @@
 }
 
 body {
+  background-color: var(--bg-color-main);
   color: var(--color-main);
+  font-family: 'Helvetica Neue', 'Open Sans', 'Roboto', Arial, sans-serif;
 }
+
+button {
+  border: 1px solid var(--button-border-color);
+  border-radius: 50px;
+  padding: 10px 20px;
+  height: 35px;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus {
+  border-color: var(--button-hover-border-color);
+  background-color: var(--button-hover-bg-color);
+}
+
+button:active {
+  border-color: var(--button-active-border-color);
+  background-color: var(--button-active-bg-color);
+}
+
+.game-board {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.game-board-body {
+  border: 1px solid var(--border-color-main);
+}
+
+.play-again {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.game-done {
+  position: relative;
+  margin: 0 auto;
+  width: 75%;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.game-done .message {
+  padding-bottom: .5rem;
+}
+
+.card-rows {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.card-container {
+  position: relative;
+  display: inline-block;
+  margin: 12px;
+  border: 4px solid transparent;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+.card,
+.card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  z-index: 10;
+  border: 1px solid transparent;
+}
+
+.card-back {
+  z-index: 20;
+  border: 1px solid var(--card-border-color);
+  background-color: var(--card-bg-color);
+}
+
+.infinity {
+  font-size: 1.4rem;
+}
+
+.game-board-body .loader {
+  margin: 0 auto;
+  padding: 20px;
+  width: 75%;
+  text-align: center;
+}
+
+.loader .loader-grid {
+  margin: 10px auto;
+}
+
+.loader-grid {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.loader-grid div {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--loader-grid-bg-color);
+  animation: loader-grid 1.2s linear infinite;
+}
+
+.loader-grid div:nth-child(1) {
+  top: 8px;
+  left: 8px;
+  animation-delay: 0s;
+}
+
+.loader-grid div:nth-child(2) {
+  top: 8px;
+  left: 32px;
+  animation-delay: -0.4s;
+}
+
+.loader-grid div:nth-child(3) {
+  top: 8px;
+  left: 56px;
+  animation-delay: -0.8s;
+}
+
+.loader-grid div:nth-child(4) {
+  top: 32px;
+  left: 8px;
+  animation-delay: -0.4s;
+}
+
+.loader-grid div:nth-child(5) {
+  top: 32px;
+  left: 32px;
+  animation-delay: -0.8s;
+}
+
+.loader-grid div:nth-child(6) {
+  top: 32px;
+  left: 56px;
+  animation-delay: -1.2s;
+}
+
+.loader-grid div:nth-child(7) {
+  top: 56px;
+  left: 8px;
+  animation-delay: -0.8s;
+}
+
+.loader-grid div:nth-child(8) {
+  top: 56px;
+  left: 32px;
+  animation-delay: -1.2s;
+}
+
+.loader-grid div:nth-child(9) {
+  top: 56px;
+  left: 56px;
+  animation-delay: -1.6s;
+}
+
+@keyframes loader-grid {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+

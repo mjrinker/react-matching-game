@@ -1,32 +1,18 @@
 module.exports = {
-  parser: 'babel-eslint',
-  env: {
+  'env': {
     browser: true,
     commonjs: true,
-    es6: true,
-    node: true,
+    es2021: true,
     jest: true,
+    node: true,
   },
-  parserOptions: {
-    ecmaVersion: 2020,
-    ecmaFeatures: {
-      jsx: true,
-    },
+  'extends': ['mjrinker', 'mjrinker-react'],
+  'parser': 'babel-eslint',
+  'parserOptions': {
+    ecmaFeatures: { jsx: true },
+    ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', 'react-hooks'],
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
-  ],
-  settings: {
-    react: {
-      version: '16.x',
-    },
-  },
-  rules: {
-    'react/prop-types': ['off'],
-    'react/no-unescaped-entities': ['error', { forbid: ['>', '}'] }],
-  },
+  'plugins': ['react', 'react-hooks'],
+  'settings': { react: { version: 'detect' } },
 };
